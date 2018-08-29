@@ -1,0 +1,33 @@
+.friends{
+    display: flex;
+    justify-content: space-between;
+    height: 356px;
+}
+
+.friends__column{
+    width: 50%;
+    overflow: scroll;
+}
+
+.friends__column-left{
+    border-right: 1px solid #f0f0f0;
+}
+
+.friends__column-title{
+    text-align: left;
+    color: #5b5b5b;
+    padding: 2%;
+    padding-left: 6%;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.friends__list{
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0;
+    height: 100%;
+}
+
+#filteredFriendsLeft{
+    display: none;
+}

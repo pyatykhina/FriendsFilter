@@ -1,0 +1,46 @@
+.friendsVK{
+    flex-direction: column;
+}
+
+.friend{
+    display: flex;
+    color: #4f4f4f;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+    padding: 2.5%;
+    justify-content: space-between;
+
+    &:last-child{
+        border-bottom: none;
+    }
+}
+
+.friend__info{
+    display: flex;
+    align-items: center;
+}
+
+.friend__photo{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.friend__name{
+    color: #4f4f4f;
+}
+
+.friend__button{
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+}
+
+.friend__button-left{
+    background-image: url(../../images/plus.png);
+}
+
+.friend__button-right{
+    background-image: url(../../images/cross.png);
+}

@@ -1,0 +1,22 @@
+.header{
+    background-color: #ff8663;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px 7px 0 0;
+}
+
+.header__title{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    padding: 1.5%;
+}
+
+.header__close{
+    background-color: #ff8663;
+    border: none;
+    outline: none;
+    padding: 1.5%;
+    margin-right: 7px;
+}

@@ -1,0 +1,27 @@
+.search{
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+}
+
+.search__item{
+    width: 50%;
+    background-color: #f0f0f0;
+    padding: 1.5%;
+}
+
+.search__input{
+    height: 26px;
+    border-radius: 13px;
+    width: 90%;
+    border: none;
+    padding-left: 5%;
+    outline: none;
+}
+
+.search__input-left{
+    background-image: url(../../images/glass.png);
+    background-repeat: no-repeat;
+    background-position: 5px;
+    padding-left: 8%;
+}
