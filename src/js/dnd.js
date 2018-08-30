@@ -1,3 +1,5 @@
+import { restoreLeft, restoreRight } from './../js/search';
+
 var leftList = document.querySelector('#friends__list-left');
 var rightList = document.querySelector('#friends__list-right');
 
@@ -26,9 +28,11 @@ function dnd(zones) {
                 if (currentDrag.source == leftList) {
                     currentDrag.node.lastElementChild.classList.remove('friend__button-left');
                     currentDrag.node.lastElementChild.classList.add('friend__button-right');
+                    restoreRight(currentDrag.node);
                 } else {
                     currentDrag.node.lastElementChild.classList.remove('friend__button-right');
                     currentDrag.node.lastElementChild.classList.add('friend__button-left');
+                    restoreLeft(currentDrag.node);
                 }
                 currentDrag = null;
             }
@@ -44,8 +48,11 @@ function dndButton() {
             currentDrag = { source: leftList, node: e.target.parentNode };
             leftList.removeChild(currentDrag.node);
             rightList.appendChild(currentDrag.node);
+
             currentDrag.node.lastElementChild.classList.remove('friend__button-left');
             currentDrag.node.lastElementChild.classList.add('friend__button-right');
+
+            restoreRight(currentDrag.node);
         }
     })
 
@@ -54,8 +61,11 @@ function dndButton() {
             currentDrag = { source: rightList, node: e.target.parentNode };
             rightList.removeChild(currentDrag.node);
             leftList.appendChild(currentDrag.node);
+
             currentDrag.node.lastElementChild.classList.remove('friend__button-right');
             currentDrag.node.lastElementChild.classList.add('friend__button-left');
+
+            restoreLeft(currentDrag.node);
         }
     })
 }

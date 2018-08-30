@@ -1,7 +1,5 @@
 var leftList = document.querySelector('#friends__list-left');
-var filteredFriendsLeft = document.querySelector('#filteredFriendsLeft');
 var rightList = document.querySelector('#friends__list-right');
-var filteredFriendsRight = document.querySelector('#filteredFriendsRight');
 
 function isMatching(full, chunk) {
     if (full.toLowerCase().indexOf(chunk.toLowerCase()) >= 0) {
@@ -14,35 +12,21 @@ function isMatching(full, chunk) {
 function searchLeft() {
     var inputLeft = document.querySelector('.search__input-left');
 
-    inputLeft.addEventListener('keyup', function() {
+    inputLeft.addEventListener('keyup', function () {
         var elementsLeft = leftList.getElementsByClassName('friend');
 
-        filteredFriendsLeft.innerHTML = '';
-        
         if (inputLeft.value !== '') {
-            leftList.style.display = 'none';
-            filteredFriendsLeft.style.display = 'block';
-        }
-        
-        for (var element of elementsLeft) {
-            if (isMatching(element.firstElementChild.lastElementChild.innerHTML, inputLeft.value)) {
-                var filteredFriend = document.createElement('li');
+            for (var friend of elementsLeft) {
+                friend.style.display = 'none';
 
-                filteredFriend = element.cloneNode(true);
-                filteredFriendsLeft.appendChild(filteredFriend);
+                if (isMatching(friend.firstElementChild.lastElementChild.innerHTML, inputLeft.value)) {
+                    friend.style.display = 'flex';
+                }
             }
-        }
-        if (filteredFriendsLeft.firstChild == null) {
-            var notFriends = document.createElement('div');
-    
-            notFriends.innerHTML= 'Друзей не найдено';
-            notFriends.style.color = '#5b5b5b';
-            filteredFriendsLeft.appendChild(notFriends);
-        }
-        if (inputLeft.value == '') {
-            filteredFriendsLeft.innerHTML = '';
-            leftList.style.display = 'block';
-            filteredFriendsLeft.style.display = 'none';  
+        } else {
+            for (var friend of elementsLeft) {
+                friend.style.display = 'flex';
+            }
         }
     })
 }
@@ -50,40 +34,55 @@ function searchLeft() {
 function searchRight() {
     var inputRight = document.querySelector('.search__input-right');
 
-    inputRight.addEventListener('keyup', function() {
+    inputRight.addEventListener('keyup', function () {
         var elementsRight = rightList.getElementsByClassName('friend');
 
-        filteredFriendsRight.innerHTML = '';
-        
         if (inputRight.value !== '') {
-            rightList.style.display = 'none';
-            filteredFriendsRight.style.display = 'block';
-        }
-        
-        for (var element of elementsRight) {
-            if (isMatching(element.firstElementChild.lastElementChild.innerHTML, inputRight.value)) {
-                var filteredFriend = document.createElement('li');
+            for (var friend of elementsRight) {
+                friend.style.display = 'none';
 
-                filteredFriend = element.cloneNode(true);
-                filteredFriendsRight.appendChild(filteredFriend);
+                if (isMatching(friend.firstElementChild.lastElementChild.innerHTML, inputRight.value)) {
+                    friend.style.display = 'flex';
+                }
             }
-        }
-        if (filteredFriendsRight.firstChild == null) {
-            var notFriends = document.createElement('div');
-    
-            notFriends.innerHTML= 'Друзей не найдено';
-            notFriends.style.color = '#5b5b5b';
-            filteredFriendsRight.appendChild(notFriends);
-        }
-        if (inputRight.value == '') {
-            filteredFriendsRight.innerHTML = '';
-            rightList.style.display = 'block';
-            filteredFriendsRight.style.display = 'none';  
+        } else {
+            for (var friend of elementsRight) {
+                friend.style.display = 'flex';
+            }
         }
     })
 }
 
+function restoreLeft(friend) {
+
+    var inputLeft = document.querySelector('.search__input-left');
+
+    if (inputLeft.value !== '') {
+        friend.style.display = 'none';
+
+        if (isMatching(friend.firstElementChild.lastElementChild.innerHTML, inputLeft.value)) {
+            friend.style.display = 'flex';
+        }
+    } 
+}
+
+function restoreRight(friend) {
+
+    var inputRight = document.querySelector('.search__input-right');
+
+    if (inputRight.value !== '') {
+        friend.style.display = 'none';
+
+        if (isMatching(friend.firstElementChild.lastElementChild.innerHTML, inputRight.value)) {
+            friend.style.display = 'flex';
+        }
+    } 
+}
+
 export {
     searchLeft,
-    searchRight
+    searchRight,
+
+    restoreLeft,
+    restoreRight
 }
